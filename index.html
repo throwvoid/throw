@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>westcoast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-red: #ff0000;
+      --glow-white: #ffffff;
+      --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      --tell-color: #3fe2c7;
+    }
+    body {
+      background-color: #050505;
+      color: #e0e0e0;
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Space Mono', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      padding: 20px;
+    }
+    .avatar-wrapper {
+      margin-bottom: 10px;
+    }
+    .avatar {
+      width: clamp(100px, 25vw, 130px);
+      height: clamp(100px, 25vw, 130px);
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      object-fit: cover;
+      box-shadow: 0 0 30px rgba(0,0,0,0.9);
+    }
+    .username {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 8vw, 3rem);
+      margin: 0;
+      letter-spacing: 4px;
+      text-transform: lowercase;
+      color: var(--glow-white);
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    }
+    .quote {
+      font-size: clamp(0.7rem, 3vw, 0.9rem);
+      color: #bbbbbb;
+      margin: 8px 0 18px 0;
+      font-style: italic;
+      letter-spacing: 1px;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 0, 0, 0.1);
+      padding: 6px 16px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 0, 0, 0.3);
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--primary-red);
+      box-shadow: 0 0 12px var(--primary-red);
+    }
+    .status-text {
+      color: var(--primary-red);
+      font-size: 0.85rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+    .socials {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .social-btn.instagram:hover {
+      background: var(--insta-gradient);
+      border-color: transparent;
+      box-shadow: 0 0 20px rgba(204, 35, 102, 0.4);
+    }
+    .social-btn.tellonym:hover {
+      background: var(--tell-color);
+      color: #000;
+      border-color: transparent;
+      box-shadow: 0 0 20px rgba(63, 226, 199, 0.4);
+    }
+    .music-card {
+      margin-top: 35px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .play-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+    .play-btn svg { width: 18px; height: 18px; fill: currentColor; }
+    .copyright {
+      margin-top: clamp(40px, 10vh, 60px);
+      font-size: 0.65rem;
+      color: var(--glow-white);
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    #particles {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <div class="container">
+    <div class="avatar-wrapper">
+      <img class="avatar" src="avatar.png" alt="Avatar" />
+    </div>
+
+    <div class="name-section">
+      <h1 class="username">westcoast</h1>
+      <p class="quote">is that your end westcoast ?</p>
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span class="status-text">dead 💀</span>
+      </div>
+    </div>
+
+    <div class="socials">
+      <a href="https://www.instagram.com/throwvoid/" target="_blank" class="social-btn instagram">
+        INSTAGRAM
+      </a>
+      <a href="https://tellonym.me/throwvoid" target="_blank" class="social-btn tellonym">
+        TELLONYM
+      </a>
+    </div>
+
+    <div class="music-card">
+      <button class="play-btn" id="playBtn" onclick="toggleMusic()">
+        <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+      <span id="song-title" style="font-size: 0.65rem; letter-spacing: 1px; color: #888;">LOADING...</span>
+      <audio id="bgMusic" src="end - VAMPIRE.mp3" loop></audio>
+    </div>
+
+    <div class="copyright">
+      © 2008 westcoast — all rights reserved
+    </div>
+  </div>
+
+  <script>
+    /* [source: 2] Particles logic */
+    (function () {
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let W, H, stars = [];
+      function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+      function randomStar() {
+        return { x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.2, alpha: Math.random() * 0.5, speed: Math.random() * 0.1 };
+      }
+      function init() { stars = Array.from({ length: 60 }, randomStar); }
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        for (const s of stars) {
+          ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,255,255,${s.alpha})`; ctx.fill();
+          s.y -= s.speed; if (s.y < -4) s.y = H + 4;
+        }
+        requestAnimationFrame(draw);
+      }
+      window.addEventListener('resize', () => { resize(); init(); });
+      resize(); init(); draw();
+    })();
+
+    /* Music logic with updated filename[cite: 2] */
+    const audio = document.getElementById("bgMusic");
+    const playIcon = document.getElementById("playIcon");
+    const pauseIcon = document.getElementById("pauseIcon");
+    const songTitle = document.getElementById("song-title");
+    let playing = false;
+
+    /* Update title display from filename */
+    const src = audio.getAttribute('src');
+    const name = src.split('/').pop().replace(/\.[^.]+$/, '').toUpperCase();
+    songTitle.textContent = name;
+
+    function toggleMusic() {
+      if (playing) {
+        audio.pause();
+        playIcon.style.display = "block";
+        pauseIcon.style.display = "none";
+      } else {
+        audio.play().catch(() => {});
+        playIcon.style.display = "none";
+        pauseIcon.style.display = "block";
+      }
+      playing = !playing;
+    }
+
+    document.addEventListener("click", () => { 
+      if(!playing) { 
+        audio.play().then(() => {
+          playing = true;
+          playIcon.style.display = "none";
+          pauseIcon.style.display = "block";
+        }).catch(() => {});
+      } 
+    }, { once: true });
+  </script>
+</body>
+</html>
